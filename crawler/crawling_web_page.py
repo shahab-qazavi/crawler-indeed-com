@@ -66,7 +66,7 @@ def crawling_indeed(what, where):
                 'salary': salary,
                 'company name': company_name,
                 'job title': what,
-                'locate job': where,
+                'job location': where,
             }
             col_crawl.insert_one(contain_dict)
             print(a)
