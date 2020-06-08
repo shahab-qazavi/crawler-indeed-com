@@ -44,14 +44,12 @@ def crawling_indeed(what, where):
             company_name = ""
             if item.select('span.company a'):
                 company_name = item.select('span.company a')[0].text.strip()
-            else:
-                pass
-            salary=""
+
+            salary = ""
             if item.select('div.salarySnippet'):
                 salary = item.select('div.salarySnippet span.salary')[0].text.translate({ord("\n"): None}).strip()
                 # print(salary)
-            else:
-                pass
+
             result = requests.get(url)
             html = result.text
             parsed_html = BeautifulSoup(html, "html.parser")
@@ -66,7 +64,7 @@ def crawling_indeed(what, where):
                 'salary': salary,
                 'company name': company_name,
                 'job title': what,
-                'locate job': where,
+                'job location': where,
             }
             col_crawl.insert_one(contain_dict)
             print(a)
