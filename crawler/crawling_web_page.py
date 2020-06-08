@@ -12,7 +12,9 @@ col_crawl = db['crawling']
 def crawling_indeed(what, where):
     x = 0
     y = 0
+
     next_page = "Next »"
+
     while next_page == "Next »":
         a = 0
         result = requests.get('https://www.indeed.com/jobs?q='+what+'&l='+where+'&start='+str(x))
@@ -23,6 +25,7 @@ def crawling_indeed(what, where):
         parsed_html = BeautifulSoup(html, "html.parser")
         paragraph = parsed_html.select('.jobsearch-SerpJobCard')
         # print(paragraph)
+
         try:
             if len(parsed_html.select('div.pagination span.np'))>1:
                 next_page = parsed_html.select('div.pagination span.np')[1].text
