@@ -1,5 +1,7 @@
 # indeed
 
+__author__='Shahab Qazavi'
+
 from pymongo import MongoClient
 import requests
 from bs4 import BeautifulSoup
